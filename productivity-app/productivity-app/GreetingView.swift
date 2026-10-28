@@ -19,11 +19,11 @@ class ContributionCounter {
 }
 
 struct GreetingView: View {
-    @State private var counter = ContributionCounter()
+    @Environment(ContributionCounter.self) private var counter
     
     var body: some View {
         VStack(spacing:20) {
-            Text("Good morning")
+            Text("Good morning!")
                 .font(.largeTitle.bold())
             
             Text("Contributions logged: \(counter.totalCount)")
@@ -38,4 +38,5 @@ struct GreetingView: View {
 
 #Preview {
     GreetingView()
+        .environment(ContributionCounter())
 }
