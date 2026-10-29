@@ -20,18 +20,29 @@ class ContributionCounter {
 
 struct GreetingView: View {
     @Environment(ContributionCounter.self) private var counter
+    @State private var showAgenda = false
     
     var body: some View {
-        VStack(spacing:20) {
-            Text("Good morning!")
-                .font(.largeTitle.bold())
-            
-            Text("Contributions logged: \(counter.totalCount)")
-            
-            Button("Add one") {
-                counter.increment()
+        NavigationStack{
+            VStack(spacing:20) {
+                Text("Good morning!")
+                    .font(.largeTitle.bold())
+                
+                Text("Contributions logged: \(counter.totalCount)")
+                
+                Button("Add one") {
+                    counter.increment()
+                }
+                .buttonStyle(.borderedProminent)
+                
+                Button("Let's see what's on the agenda today") {
+                    showAgenda=true
+                }
+                .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.borderedProminent)
+            .navigationDestination(isPresented: $showAgenda) {
+                AgendaView()
+            }
         }
     }
 }
