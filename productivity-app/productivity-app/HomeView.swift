@@ -14,6 +14,18 @@ struct HomeView: View {
                 .tabItem {
                     Label("Agenda", systemImage: "list.bullet")
                 }
+            exampleAPI()
+                .tabItem {
+                    Label("iTunes", systemImage: "heart.fill")
+                }
+            Text("History tab")
+                .tabItem{
+                    Label("History", systemImage: "clock")
+                }
+            Text("Settings tab")
+                .tabItem{
+                    Label("Settings", systemImage: "gear")
+                }
         }
     }
 }
