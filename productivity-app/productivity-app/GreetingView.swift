@@ -20,7 +20,7 @@ class ContributionCounter {
 
 struct GreetingView: View {
     @Environment(ContributionCounter.self) private var counter
-    @State private var showAgenda = false
+    @State private var showHome = false
     
     var body: some View {
         NavigationStack{
@@ -36,12 +36,12 @@ struct GreetingView: View {
                 .buttonStyle(.borderedProminent)
                 
                 Button("Let's see what's on the agenda today") {
-                    showAgenda=true
+                    showHome=true
                 }
                 .buttonStyle(.borderedProminent)
             }
-            .navigationDestination(isPresented: $showAgenda) {
-                AgendaView()
+            .navigationDestination(isPresented: $showHome) {
+                HomeView()
             }
         }
     }
