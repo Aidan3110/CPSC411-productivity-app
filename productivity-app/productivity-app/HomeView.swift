@@ -1,3 +1,5 @@
+// xcode: set sdk=iOS
+
 //
 //  HomeView.swift
 //  productivity-app
@@ -22,7 +24,7 @@ struct HomeView: View {
                 .tabItem{
                     Label("History", systemImage: "clock")
                 }
-            Text("Settings tab")
+            SettingsView()
                 .tabItem{
                     Label("Settings", systemImage: "gear")
                 }

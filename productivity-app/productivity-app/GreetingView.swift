@@ -9,17 +9,7 @@
 
 import SwiftUI
 
-@Observable
-class ContributionCounter {
-    var totalCount = 0
-    
-    func increment() {
-        totalCount += 1
-    }
-}
-
 struct GreetingView: View {
-    @Environment(ContributionCounter.self) private var counter
     @State private var showHome = false
     
     var body: some View {
@@ -27,13 +17,6 @@ struct GreetingView: View {
             VStack(spacing:20) {
                 Text("Good morning!")
                     .font(.largeTitle.bold())
-                
-                Text("Contributions logged: \(counter.totalCount)")
-                
-                Button("Add one") {
-                    counter.increment()
-                }
-                .buttonStyle(.borderedProminent)
                 
                 Button("Let's see what's on the agenda today") {
                     showHome=true
@@ -49,5 +32,4 @@ struct GreetingView: View {
 
 #Preview {
     GreetingView()
-        .environment(ContributionCounter())
 }

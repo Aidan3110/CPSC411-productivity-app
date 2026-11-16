@@ -1,8 +1,17 @@
 import SwiftUI
+import SwiftData
 
 @main struct MyApp: App {
-    @State private var counter = ContributionCounter()
     @AppStorage("hasSeenGreeting") private var hasSeenGreeting = false
+    @AppStorage("appearance") private var appearance = "system"
+    
+    private var colorScheme: ColorScheme? {
+        switch appearance {
+        case "light": .light
+        case "dark": .dark
+        default: nil
+        }
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -13,7 +22,7 @@ import SwiftUI
                     GreetingView()
                 }
             }
-            .environment(counter)
+            .preferredColorScheme(colorScheme)
         }
     }
 }
