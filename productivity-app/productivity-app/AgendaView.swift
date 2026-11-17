@@ -14,15 +14,27 @@ struct Task: Identifiable {
 
 struct AgendaView: View {
     let tasks = [
-        Task(description: "Finish history notes"),
-        Task(description: "Study for Calculus midterm"),
-        Task(description: "Doctor's appt at 2pm")
+        Task(description: "Homework"),
+        Task(description: "Basketball practice"),
+        Task(description: "Video games")
     ]
     
     var body: some View {
-        List {
-            ForEach(tasks) { task in
-                Text(task.description)
+        NavigationStack {
+            List {
+                ForEach(tasks) { task in
+                    HStack {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.white)
+                            .frame(width: 36, height: 36)
+                            .background(.blue)
+                            .clipShape(Circle())
+                        
+                        VStack(alignment: .leading) {
+                            Text(task.description)
+                        }
+                    }
+                }
             }
         }
     }
