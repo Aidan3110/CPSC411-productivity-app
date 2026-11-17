@@ -24,5 +24,6 @@ import SwiftData
             }
             .preferredColorScheme(colorScheme)
         }
+        .modelContainer(for: ContributionItem.self)
     }
 }
